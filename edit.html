@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cập nhật thành phố</title>
+</head>
+<body>
+<form id="update-city-form" class="form-container">
+  <h2>Update City</h2>
+  <input type="hidden" id="cityId" required>
+  <label for="cityName"><b>Tên thành phố</b></label>
+  <input type="text" placeholder="Enter City Name"  id="cityName" required>
+
+  <label for="country"><b>Tên quốc gia</b></label>
+  <select id="country">
+
+  </select>
+
+  <label for="cityArea"><b>Diện tích</b></label>
+  <input type="number"  id="cityArea" >
+
+  <label for="cityPopulation"><b>Dân số</b></label>
+  <input type="number"  id="cityPopulation">
+
+  <label for="cityGDP"><b>GDP Thành phố</b></label>
+  <input type="number"  id="cityGDP" >
+
+  <label for="cityDescribe"><b>City Describe</b></label>
+  <input type="text" id="cityDescribe" >
+
+  <button type="submit" class="btn" onclick="updateCity()">Update</button>
+  <button type="button" onclick="" class="btn cancel">Cancel</button>
+</form>
+<script>
+  function updateCity()
+  {
+    //lay du lieu
+    let id = $('#cityId').val();
+    let cityName = $('#cityName').val();
+    let country = $('#country').val();
+    let cityArea = $('#cityArea').val();
+    let cityPopulation = $('#cityPopulation').val();
+    let cityGDP = $('#cityGDP').val();
+    let cityDescibe = $('cityDescribe').val();
+    let updateCity = {
+      "id" : id,
+      "cityName": cityName,
+      "country": country,
+      "cityArea": cityArea,
+      "cityPopulation":cityPopulation,
+      "cityGDP": cityGDP,
+      "cityDescribe": cityDescibe
+    };
+    // goi ajax
+    $.ajax({
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      type: "PUT",
+      data: JSON.stringify(updateCity),
+      //tên API
+      url: "http://localhost:8080/home/cities/updateCity/"+id,
+      //xử lý khi thành công
+      success: getAllData
+
+    });
+    //chặn sự kiện mặc định của thẻ
+    event.preventDefault();
+  }
+</script>
+</body>
+</html>

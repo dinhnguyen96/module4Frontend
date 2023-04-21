@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Danh sách thành phố</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2}
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #table-title {
+            float: left;
+        }
+
+        #add-btn {
+            float: right;
+        }
+    </style>
+</head>
+<body onload="getAllData()">
+<h2 id="table-title">Danh sách thành phố</h2>
+<button id="add-btn">Thêm thành phố</button>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Tên thành phố</th>
+        <th>Quốc gia</th>
+        <th>Diện tích</th>
+        <th>Dân số</th>
+        <th>GDP</th>
+        <th>Mô tả</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr id = "cityList">
+
+    </tr>
+    </tbody>
+</table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="data.js"></script>
+
+</body>
+</html>
